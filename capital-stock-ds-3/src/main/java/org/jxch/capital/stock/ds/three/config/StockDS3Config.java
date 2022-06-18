@@ -2,11 +2,13 @@ package org.jxch.capital.stock.ds.three.config;
 
 import okhttp3.OkHttpClient;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import java.util.concurrent.TimeUnit;
 
 @Configuration
+@ComponentScan(basePackages = "org.jxch.capital.stock.ds")
 public class StockDS3Config {
 
     @Bean

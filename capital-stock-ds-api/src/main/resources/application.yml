@@ -1,5 +1,0 @@
-app:
-  stock:
-    ds:
-      retry: 3
-      sleep-second: 1000

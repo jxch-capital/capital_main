@@ -23,14 +23,14 @@ public class StockDailyKLineController implements StockDailyKLineAPI {
     @PostMapping("/search-singleton")
     @ResponseBody
     @Override
-    public List<KLineVO> search(@RequestBody SearchDailyKLineDTO dto) {
-        return stockDailyKLine3Service.searchSingleton(dto);
+    public List<KLineVO> search(@RequestBody SearchDailyKLineDTO param) {
+        return stockDailyKLine3Service.searchSingleton(param);
     }
 
     @PostMapping("/search-all")
     @ResponseBody
     @Override
-    public List<StockKLineVO> search(@RequestBody SearchAllDailyKLineDTO dto) {
-        return stockDailyKLine3Service.searchAll(dto);
+    public List<StockKLineVO> search(@RequestBody SearchAllDailyKLineDTO param) {
+        return stockDailyKLine3Service.searchAll(param);
     }
 }

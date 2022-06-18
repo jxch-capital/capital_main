@@ -1,0 +1,14 @@
+module capital.stock.ds.api {
+    exports org.jxch.capital.stock.ds.api;
+    exports org.jxch.capital.stock.ds.entity.dto;
+    exports org.jxch.capital.stock.ds.entity.vo;
+    requires spring.cloud.openfeign.core;
+    requires spring.context;
+    requires spring.web;
+    requires spring.webmvc;
+    requires lombok;
+    requires spring.beans;
+    requires spring.core;
+    requires org.mapstruct;
+
+}

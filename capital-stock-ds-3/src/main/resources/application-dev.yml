@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: Capital-DC-A[DEV]
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin-dev:admin-dev@127.0.0.1:10001/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+  instance:
+    prefer-ip-address: true

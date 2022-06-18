@@ -16,17 +16,17 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 @Component("stockDailyKLineHystrix")
 public class StockDailyKLineHystrix implements StockDailyKLineAPI {
-    @Value("${app.stock.ds.retry}")
+    @Value("${app.stock.ds.retry:3}")
     private int retry;
 
-    @Value("${app.stock.ds.sleep-second}")
+    @Value("${app.stock.ds.sleep-second:1000}")
     private int sleepSecond;
 
     private final ThreadLocal<Integer> threadLocal = new ThreadLocal<>();
 
     private final StockDailyKLineAPI stockDailyKLineAPI;
 
-    public StockDailyKLineHystrix(@Qualifier("stockDailyKLineAPI") StockDailyKLineAPI stockDailyKLineAPI) {
+    public StockDailyKLineHystrix(StockDailyKLineAPI stockDailyKLineAPI) {
         this.stockDailyKLineAPI = stockDailyKLineAPI;
     }
 

@@ -1,4 +1,4 @@
-package org.jxch.capital.stock.ds.config.mvc;
+package org.jxch.capital.stock.ds.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.jxch.capital.stock.ds.entity.vo.ResponseVO;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.util.Calendar;
 
 @Slf4j
-@RestControllerAdvice("org.jxch.capital.stock.ds")
+@RestControllerAdvice(basePackages = "org.jxch.capital.stock.ds.*.controller")
 public class DSExceptionHandlerControllerAdvice {
     @ExceptionHandler({Exception.class})
     public ResponseVO<Object> exceptionHandler(Exception e) {

@@ -1,4 +1,4 @@
-package org.jxch.capital.stock.ds.config.mvc;
+package org.jxch.capital.stock.ds.config;
 
 import org.jxch.capital.stock.ds.entity.vo.ResponseVO;
 import org.springframework.core.MethodParameter;
@@ -12,12 +12,12 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
 
 import java.util.Calendar;
 
-@RestControllerAdvice("org.jxch.capital.stock.ds")
+@RestControllerAdvice(basePackages = "org.jxch.capital.stock.ds.three.controller")
 public class DSResponseBodyAdvice implements ResponseBodyAdvice<Object> {
 
     @Override
     public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
-        return true;
+        return !returnType.getParameterType().equals(ResponseVO.class);
     }
 
     @Override

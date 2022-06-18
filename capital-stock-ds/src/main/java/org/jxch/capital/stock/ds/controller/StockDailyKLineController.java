@@ -1,9 +1,9 @@
-package org.jxch.capital.stock.datasource.controller;
+package org.jxch.capital.stock.ds.controller;
 
-import org.jxch.capital.stock.datasource.entity.dto.SearchAllDailyKLineDTO;
-import org.jxch.capital.stock.datasource.entity.dto.SearchDailyKLineDTO;
-import org.jxch.capital.stock.datasource.entity.vo.KLineVO;
-import org.jxch.capital.stock.datasource.entity.vo.StockKLineVO;
+import org.jxch.capital.stock.ds.entity.dto.SearchAllDailyKLineDTO;
+import org.jxch.capital.stock.ds.entity.dto.SearchDailyKLineDTO;
+import org.jxch.capital.stock.ds.entity.vo.KLineVO;
+import org.jxch.capital.stock.ds.entity.vo.StockKLineVO;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,6 +11,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/daily")
 public class StockDailyKLineController {
+
+    
 
     @PostMapping("/search-all")
     @ResponseBody

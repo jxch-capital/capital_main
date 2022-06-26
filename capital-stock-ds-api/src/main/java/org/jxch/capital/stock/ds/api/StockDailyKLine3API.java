@@ -11,15 +11,15 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
-@Component("stockDailyKLineAPI")
-@FeignClient(name = "${capital.stock-datasource.service-name}", fallback = StockDailyKLineHystrix.class
-        , contextId = "stockDailyKLineAPI")
-public interface StockDailyKLineAPI {
+@Component("stockDailyKLine3API")
+@FeignClient(name = "${capital.ds3.service-name}", fallback = StockDailyKLine3Hystrix.class
+        , contextId = "stockDailyKLine3API")
+public interface StockDailyKLine3API {
 
     @PostMapping("/daily/search-single")
-    List<KLineVO> search(@RequestBody SearchDailyKLineDTO dto);
+    List<KLineVO> searchSingleton(@RequestBody SearchDailyKLineDTO dto);
 
     @PostMapping("/daily/search-all")
-    List<StockKLineVO> search(@RequestBody SearchAllDailyKLineDTO dto);
+    List<StockKLineVO> searchAll(@RequestBody SearchAllDailyKLineDTO dto);
 
 }

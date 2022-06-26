@@ -5,7 +5,6 @@ import org.jxch.capital.stock.ds.entity.dto.SearchAllDailyKLineDTO;
 import org.jxch.capital.stock.ds.entity.dto.SearchDailyKLineDTO;
 import org.jxch.capital.stock.ds.entity.vo.KLineVO;
 import org.jxch.capital.stock.ds.entity.vo.StockKLineVO;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
@@ -15,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 
 @Slf4j
 @Component("stockDailyKLineHystrix")
-public class StockDailyKLineHystrix implements StockDailyKLineAPI {
+public class StockDailyKLine3Hystrix implements StockDailyKLine3API {
     @Value("${app.stock.ds.retry:3}")
     private int retry;
 
@@ -24,24 +23,24 @@ public class StockDailyKLineHystrix implements StockDailyKLineAPI {
 
     private final ThreadLocal<Integer> threadLocal = new ThreadLocal<>();
 
-    private final StockDailyKLineAPI stockDailyKLineAPI;
+    private final StockDailyKLine3API stockDailyKLine3API;
 
-    public StockDailyKLineHystrix(StockDailyKLineAPI stockDailyKLineAPI) {
-        this.stockDailyKLineAPI = stockDailyKLineAPI;
+    public StockDailyKLine3Hystrix(StockDailyKLine3API stockDailyKLine3API) {
+        this.stockDailyKLine3API = stockDailyKLine3API;
     }
 
     @Nullable
     @Override
-    public List<KLineVO> search(SearchDailyKLineDTO dto) {
+    public List<KLineVO> searchSingleton(SearchDailyKLineDTO dto) {
         retry();
-        return stockDailyKLineAPI.search(dto);
+        return stockDailyKLine3API.searchSingleton(dto);
     }
 
     @Nullable
     @Override
-    public List<StockKLineVO> search(SearchAllDailyKLineDTO dto) {
+    public List<StockKLineVO> searchAll(SearchAllDailyKLineDTO dto) {
         retry();
-        return stockDailyKLineAPI.search(dto);
+        return stockDailyKLine3API.searchAll(dto);
     }
 
     private void retry() {

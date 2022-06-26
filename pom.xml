@@ -8,7 +8,6 @@
         <module>capital-stock-ds</module>
         <module>capital-stock-ds-api</module>
         <module>capital-stock-ds-3</module>
-        <module>capital-eureka</module>
     </modules>
 
     <parent>

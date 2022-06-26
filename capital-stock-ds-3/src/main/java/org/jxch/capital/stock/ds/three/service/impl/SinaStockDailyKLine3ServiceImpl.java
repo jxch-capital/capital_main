@@ -1,6 +1,7 @@
 package org.jxch.capital.stock.ds.three.service.impl;
 
 import com.alibaba.fastjson2.JSON;
+import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -40,7 +41,7 @@ public class SinaStockDailyKLine3ServiceImpl extends AbstractStockDailyKLine3Ser
     }
 
     @Override
-    public List<KLineVO> searchSingleton(SearchDailyKLineDTO dto) {
+    public List<KLineVO> searchSingleton(@NonNull SearchDailyKLineDTO dto) {
         Request request = new Request.Builder()
                 .url(getURL(dto.getCode(), dto.getStart(), dto.getStockType()))
                 .addHeader("Connection", "keep-alive")
@@ -60,7 +61,7 @@ public class SinaStockDailyKLine3ServiceImpl extends AbstractStockDailyKLine3Ser
     }
 
     @Override
-    public List<StockKLineVO> searchAll(SearchAllDailyKLineDTO dto) {
+    public List<StockKLineVO> searchAll(@NonNull SearchAllDailyKLineDTO dto) {
         this.decrementOrder();
         return dto.getCodes().stream()
                 .map(code -> StockKLineVO.builder().code(code)
@@ -73,7 +74,8 @@ public class SinaStockDailyKLine3ServiceImpl extends AbstractStockDailyKLine3Ser
                         .build()).toList();
     }
 
-    private String getURL(String code, Date start, StockType stockType) {
+    @NonNull
+    private String getURL(String code, Date start,@NonNull StockType stockType) {
         String sCode = "";
         switch (stockType) {
             case SH -> sCode = "sh" + code;

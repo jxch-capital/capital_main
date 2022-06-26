@@ -1,5 +1,6 @@
 package org.jxch.capital.stock.ds.three.service;
 
+import lombok.NonNull;
 import org.jxch.capital.stock.ds.entity.StockType;
 
 import java.util.Calendar;
@@ -18,7 +19,7 @@ public abstract class AbstractStockDailyKLine3Service implements StockDailyKLine
     }
 
     @Override
-    public void sleep(long time, TimeUnit unit) {
+    public void sleep(long time,@NonNull TimeUnit unit) {
         wakeUpDate.setTime(calendar.getTime().getTime() + unit.toMillis(time));
     }
 

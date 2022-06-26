@@ -1,9 +1,12 @@
 package org.jxch.capital.stock.ds.entity;
 
+import lombok.Getter;
+
 public enum StockType {
     SH("sh"), SZ("sz");
 
-    private String type;
+    @Getter
+    private final String type;
 
     StockType(String type) {
         this.type = type;

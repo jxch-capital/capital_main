@@ -1,5 +1,6 @@
 package org.jxch.capital.stock.ds.three.service.impl;
 
+import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import org.jxch.capital.stock.ds.entity.dto.SearchAllDailyKLineDTO;
 import org.jxch.capital.stock.ds.entity.dto.SearchDailyKLineDTO;
@@ -78,7 +79,7 @@ public class StockDailyKLineServiceImpl implements StockDailyKLineService, Appli
     }
 
     @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+    public void setApplicationContext(@NonNull ApplicationContext applicationContext) throws BeansException {
         this.context = applicationContext;
     }
 }

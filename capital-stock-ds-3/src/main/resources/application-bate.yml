@@ -1,4 +1,14 @@
 spring:
   application:
     name: capital-stock-ds-3
+  cloud:
+    nacos:
+      config:
+        server-addr: 8.142.100.222:8848
+        group: capital
+        namespace: a02d7f8f-74e0-4417-a921-165b7490c104
+      discovery:
+        server-addr: 8.142.100.222:8848
+        group: capital
+        namespace: a02d7f8f-74e0-4417-a921-165b7490c104
 

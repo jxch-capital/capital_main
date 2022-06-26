@@ -18,6 +18,7 @@ import org.jxch.capital.stock.ds.util.DateUtil;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -53,8 +54,9 @@ public class SinaStockDailyKLine3ServiceImpl extends AbstractStockDailyKLine3Ser
             if (matcher.find()) {
                 String json = matcher.group();
                 List<SinaKLineVO> sinaKLineVOS = JSON.parseArray(json, SinaKLineVO.class);
+                sinaKLineVOS = sinaKLineVOS.stream().filter(vo -> vo.getDay().compareTo(dto.getEnd()) <= 0).toList();
                 return SinaDailyKLineVOConverter.CONVERTER.convert(sinaKLineVOS);
-            } else throw new RuntimeException("请求未获取结果");
+            } else return new ArrayList<>();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -1,12 +1,13 @@
 spring:
   application:
-    name: Capital-DC-A[DEV]
-
-eureka:
-  client:
-    service-url:
-      defaultZone: http://admin-dev:admin-dev@127.0.0.1:10001/eureka/
-    register-with-eureka: true
-    fetch-registry: true
-  instance:
-    prefer-ip-address: true
+    name: capital-stock-ds-3[DEV]
+  cloud:
+    nacos:
+      config:
+        server-addr: 8.142.100.222:8848
+        group: capital
+        namespace: a02d7f8f-74e0-4417-a921-165b7490c104
+      discovery:
+        server-addr: 8.142.100.222:8848
+        group: capital
+        namespace: a02d7f8f-74e0-4417-a921-165b7490c104

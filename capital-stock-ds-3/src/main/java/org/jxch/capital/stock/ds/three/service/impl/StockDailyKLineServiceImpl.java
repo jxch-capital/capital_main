@@ -15,9 +15,10 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import java.util.Comparator;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Slf4j
-@Service
+@Service("stockDailyKLineService")
 public class StockDailyKLineServiceImpl implements StockDailyKLineService, ApplicationContextAware {
     private ApplicationContext context;
     private List<StockDailyKLine3Service> stock3Services;
@@ -45,7 +46,8 @@ public class StockDailyKLineServiceImpl implements StockDailyKLineService, Appli
                 } catch (UnsupportedOperationException ignored) {
                 } catch (Throwable e) {
                     e.printStackTrace();
-                    log.warn("查询失败:[{}]", service.getClass());
+                    log.warn("查询失败, 该接口休眠1小时 :[{}]", service.getClass());
+                    service.sleep(1, TimeUnit.HOURS);
                 }
             }
         }
@@ -66,7 +68,8 @@ public class StockDailyKLineServiceImpl implements StockDailyKLineService, Appli
                 } catch (UnsupportedOperationException ignored) {
                 } catch (Throwable e) {
                     e.printStackTrace();
-                    log.warn("查询失败:[{}]", service.getClass());
+                    log.warn("查询失败, 该接口休眠1小时 :[{}]", service.getClass());
+                    service.sleep(2, TimeUnit.HOURS);
                 }
             }
         }

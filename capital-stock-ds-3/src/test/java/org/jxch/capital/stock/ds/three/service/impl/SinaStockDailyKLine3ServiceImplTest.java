@@ -22,10 +22,10 @@ import java.util.List;
 @Slf4j
 @SpringBootTest
 @RunWith(SpringRunner.class)
-class NetsStockDailyKLine3ServiceImplTest {
+class SinaStockDailyKLine3ServiceImplTest {
     @Autowired
-    @Qualifier("netsStockDailyKLine3Service")
-    private NetsStockDailyKLine3ServiceImpl netsStockDailyKLine3Service;
+    @Qualifier("sinaStockDailyKLine3Service")
+    private SinaStockDailyKLine3ServiceImpl sinaStockDailyKLine3ServiceImpl;
 
     @Test
     void searchSingleton() throws ParseException {
@@ -38,7 +38,7 @@ class NetsStockDailyKLine3ServiceImplTest {
                 .stockType(StockType.SH)
                 .build();
 
-        List<KLineVO> vos = netsStockDailyKLine3Service.searchSingleton(dto);
+        List<KLineVO> vos = sinaStockDailyKLine3ServiceImpl.searchSingleton(dto);
         log.info(JSON.toJSONString(vos));
     }
 
@@ -53,8 +53,7 @@ class NetsStockDailyKLine3ServiceImplTest {
                 .codes(Arrays.asList("601318", "601318"))
                 .build();
 
-        List<StockKLineVO> vos = netsStockDailyKLine3Service.searchAll(dto);
-        log.info(JSON.toJSONString(vos));
-
+        List<StockKLineVO> stockKLineVOS = sinaStockDailyKLine3ServiceImpl.searchAll(dto);
+        log.info(JSON.toJSONString(stockKLineVOS));
     }
 }

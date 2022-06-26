@@ -2,11 +2,3 @@ spring:
   application:
     name: capital-stock-ds-3
 
-eureka:
-  client:
-    service-url:
-      defaultZone: http://${eureka-user:admin}:${eureka-passwd:admin}@${eureka-domain:jkm.jiangxicheng.xyz}:${eureka-port:10001}/eureka/
-    register-with-eureka: true
-    fetch-registry: true
-  instance:
-    prefer-ip-address: true

@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import org.jxch.capital.stock.ds.entity.StockType;
+import org.jxch.capital.stock.ds.util.DateUtil;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
@@ -14,11 +15,11 @@ import java.util.List;
 @Builder
 @Accessors(chain = true)
 public class SearchAllDailyKLineDTO {
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @JsonFormat(pattern = "yyyyMMdd", timezone = "GMT+8")
+    @DateTimeFormat(pattern = DateUtil.D_PATTERN)
+    @JsonFormat(pattern = DateUtil.D_PATTERN, timezone = DateUtil.D_TIMEZONE)
     private Date start;
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    @JsonFormat(pattern = "yyyyMMdd", timezone = "GMT+8")
+    @DateTimeFormat(pattern = DateUtil.D_PATTERN)
+    @JsonFormat(pattern = DateUtil.D_PATTERN, timezone = DateUtil.D_TIMEZONE)
     private Date end;
     private List<String> codes;
     private StockType stockType;
